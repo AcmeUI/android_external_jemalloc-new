@@ -932,7 +932,7 @@ malloc_slow_flag_init(void) {
 }
 
 /* Number of sources for initializing malloc_conf */
-#define MALLOC_CONF_NSOURCES 4
+#define MALLOC_CONF_NSOURCES 2
 
 static const char *
 obtain_malloc_conf(unsigned which_source, char buf[PATH_MAX + 1]) {
@@ -1023,10 +1023,7 @@ malloc_conf_init_helper(sc_data_t *sc_data, unsigned bin_shard_sizes[SC_NBINS],
     char buf[PATH_MAX + 1]) {
 	static const char *opts_explain[MALLOC_CONF_NSOURCES] = {
 		"string specified via --with-malloc-conf",
-		"string pointed to by the global variable malloc_conf",
-		"\"name\" of the file referenced by the symbolic link named "
-		    "/etc/malloc.conf",
-		"value of the environment variable MALLOC_CONF"
+		"string pointed to by the global variable malloc_conf"
 	};
 	unsigned i;
 	const char *opts, *k, *v;
@@ -1438,7 +1435,7 @@ malloc_conf_init_helper(sc_data_t *sc_data, unsigned bin_shard_sizes[SC_NBINS],
 
 static void
 malloc_conf_init(sc_data_t *sc_data, unsigned bin_shard_sizes[SC_NBINS]) {
-	const char *opts_cache[MALLOC_CONF_NSOURCES] = {NULL, NULL, NULL, NULL};
+	const char *opts_cache[MALLOC_CONF_NSOURCES] = {NULL, NULL};
 	char buf[PATH_MAX + 1];
 
 	/* The first call only set the confirm_conf option and opts_cache */
@@ -2380,10 +2377,12 @@ je_malloc(size_t size) {
 	void* ret = cache_bin_alloc_easy(bin, &tcache_success);
 
 	if (tcache_success) {
+#if defined(ANDROID_ENABLE_TCACHE_STATS)
 		if (config_stats) {
 			*tsd_thread_allocatedp_get(tsd) += usize;
 			bin->tstats.nrequests++;
 		}
+#endif
 		if (config_prof) {
 			tcache->prof_accumbytes += usize;
 		}
