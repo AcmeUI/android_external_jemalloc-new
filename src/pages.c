@@ -15,6 +15,10 @@
 #endif
 #endif
 
+#ifndef _WIN32
+#define MADV_FREE 8
+#endif
+
 /******************************************************************************/
 /* Defines/includes needed for special android code. */
 
