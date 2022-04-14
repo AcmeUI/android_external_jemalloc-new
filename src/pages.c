@@ -22,6 +22,8 @@
 #define PAGES_FD_TAG -1
 #endif
 
+#define MADV_FREE 8
+
 /******************************************************************************/
 /* Defines/includes needed for special android code. */
 
