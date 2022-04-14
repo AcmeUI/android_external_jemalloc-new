@@ -11,6 +11,7 @@
 #undef je_malloc_stats_print
 #undef je_malloc_usable_size
 #undef je_mallocx
+#undef je_smallocx_0000000000000000000000000000000000000000
 #undef je_nallocx
 #undef je_posix_memalign
 #undef je_rallocx
