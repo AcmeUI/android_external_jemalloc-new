@@ -7,11 +7,12 @@
 #undef je_mallctlnametomib
 #undef je_malloc
 #undef je_malloc_conf
+#undef je_malloc_conf_2_conf_harder
 #undef je_malloc_message
 #undef je_malloc_stats_print
 #undef je_malloc_usable_size
 #undef je_mallocx
-#undef je_smallocx_8d7998a73dff4dcc27457c15a9110669d2d932b9
+#undef je_smallocx_54eaed1d8b56b1aa528be3bdd1877e59c56fa90c
 #undef je_nallocx
 #undef je_posix_memalign
 #undef je_rallocx

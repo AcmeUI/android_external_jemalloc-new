@@ -14,6 +14,12 @@
 /* Defined if format(printf, ...) attribute is supported. */
 #define JEMALLOC_HAVE_ATTR_FORMAT_PRINTF 
 
+/* Defined if fallthrough attribute is supported. */
+#define JEMALLOC_HAVE_ATTR_FALLTHROUGH 
+
+/* Defined if cold attribute is supported. */
+#define JEMALLOC_HAVE_ATTR_COLD 
+
 /*
  * Define overrides for non-standard allocator-related functions if they are
  * present on the system.
@@ -35,7 +41,7 @@
  * with C++.  The only justification for this is to match the prototypes that
  * glibc defines.
  */
-/* #undef JEMALLOC_USE_CXX_THROW */
+#define JEMALLOC_USE_CXX_THROW 
 
 #ifdef _MSC_VER
 #  ifdef _WIN64
